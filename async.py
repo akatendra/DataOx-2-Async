@@ -5,7 +5,7 @@ from datetime import datetime
 import scraper_async
 import database_async
 import logging.config
-# from selenium.webdriver.common.by import By
+
 
 """fix yelling at me error"""
 # Monkey Patch:

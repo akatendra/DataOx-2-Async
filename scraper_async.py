@@ -1,7 +1,4 @@
 from datetime import timedelta, datetime
-# from selenium import webdriver
-# from selenium.webdriver.chrome.service import Service
-# from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import logging
 import logging.config
@@ -21,30 +18,6 @@ logger = logging.getLogger(__name__)
 # the size of the log file.
 logging.getLogger('selenium.webdriver.remote.remote_connection').setLevel(
     logging.WARNING)
-
-
-def get_chrome_browser():
-    # LOCAL
-    options = webdriver.ChromeOptions()
-    # Unable to hide "Chrome is being controlled by automated software" infobar
-    options.add_experimental_option("excludeSwitches", ['enable-automation'])
-    # Open Chrome for full size of screen
-    options.add_argument("--start-maximized")
-    #  Will launch browser without UI(headless)
-    # options.add_argument("--headless")
-
-    # Below disabled options in local version
-    # chrome_options.add_argument('--incognito')
-    # chrome_options.add_argument('--ignore-certificate-errors')
-    # chrome_options.add_argument('--disable-extensions') #  ?
-
-    # инициализируем драйвер с нужными опциями
-    CHROME_PATH = 'd:\\Python\\chromedriver_win32\\chromedriver.exe'
-    service = Service(CHROME_PATH)
-    browser = webdriver.Chrome(service=service, options=options)
-    # LOCAL
-
-    return browser
 
 
 def splitlines(string):
