@@ -1,7 +1,7 @@
 from datetime import timedelta, datetime
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
+# from selenium import webdriver
+# from selenium.webdriver.chrome.service import Service
+# from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import logging
 import logging.config
@@ -163,24 +163,10 @@ def parse_html(html):
                 logger.debug(f'item_title: {item_title}')
 
                 # Getting an image url.
-                item_image_url = item.select_one('img')['src']
+                item_image_url = item.select_one('img')['data-src']
                 logger.debug(
                     f'item_image_url | len: {len(item_image_url)} | {item_image_url}')
 
-                # Check if image placeholder (not enough time to load)
-                '''
-                if item_image_url[-21:] == 'placeholder-large.png':
-                    # Scroll to current item for loading image
-                    item_position = browser.find_element(By.XPATH,
-                                                         f'//div[@data-listing-id="{data_listing_id}"]')
-                    browser.execute_script("arguments[0].scrollIntoView();",
-                                           item_position)
-                    # Re-read image_url
-                    item_image_url = item.select_one('img')['src']
-                    logger.debug(f'item_image_url: {item_image_url}')
-                if item_image_url[-21:] == 'placeholder-large.png':
-                    item_image_url = None
-                '''
                 # Getting a description_min.
                 item_description_min = item.select_one(
                     'div[class="description"]').text
