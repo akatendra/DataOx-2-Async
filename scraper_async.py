@@ -200,10 +200,12 @@ def parse_html(html):
                     logger.debug(
                         f'item_intersections_list: {item_intersections_list}')
                     item_intersections = item_intersections_list[0].text + ' / ' + item_intersections_list[1].text
+                    item_intersections_len = len(item_intersections)
                 else:
                     item_intersections = None
+                    item_intersections_len = None
                 logger.debug(
-                    f'item_intersections | len: {len(item_intersections)} | {item_intersections}')
+                    f'item_intersections | len: {item_intersections_len} | {item_intersections}')
 
                 # Getting beds.
                 item_beds = item.select_one(
